@@ -1,0 +1,46 @@
+openapi: 3.0.1
+info:
+  title: Frester RPG API
+  description: API per accedere allo stato di gioco di Frester tramite Supabase.
+  version: "1.0.0"
+servers:
+  - url: https://frester.onrender.com
+paths:
+  /missions/{character_id}:
+    get:
+      operationId: getActiveMissions
+      summary: Ottieni le missioni attive di un personaggio
+      parameters:
+        - name: character_id
+          in: path
+          required: true
+          description: ID del personaggio
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Missioni attive del personaggio
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mission_id:
+                    type: integer
+                  missions:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                      status:
+                        type: string
+        '500':
+          description: Errore interno del server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+components: {}
