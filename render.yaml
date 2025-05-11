@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: frester-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
